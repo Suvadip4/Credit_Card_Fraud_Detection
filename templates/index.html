@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Credit Card Fraud Detection</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 50px;
+        
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        opacity: 0.9;
+        background-image: url({{url_for('static',filename='images/bg.jpg')}});>
+        
+      }
+      .form-container {
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: bisque;
+        
+      }
+      .form-container input {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 20px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      .form-container input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+      }
+      .form-container input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      .result {
+        font-size: 1.5em;
+        color: #4caf50;
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <marquee behavior="" direction="left" style="color: rgb(5, 5, 0)" >The challenge is to recognize fraudulent credit card transactions so that the customers of credit card companies are not charged for items that they did not purchase.</marquee>
+    <div class="form-container">
+      <h2>Credit Card Fraud Detection</h2>
+      <form action="/predict" method="post">
+        <label for="details">Enter credit card details</label>
+        <input type="text" step="0.01" name="details" required />
+
+        <input type="submit" value="Predict" />
+      </form>
+      {% if prediction_text %}
+      <div class="result">{{ prediction_text }}</div>
+      {% endif %}
+    </div>
+  </body>
+</html>
